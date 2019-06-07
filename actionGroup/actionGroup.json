@@ -30,7 +30,7 @@
       "tags": {},
       "properties": {
         "groupShortName": "[parameters('actionGroupShortName')]",
-        "enabled": "[parameters('actionGroupEnabled')]",
+        "enabled": true,
         "emailReceivers": [
           {
             "name": "[parameters('emailReceiverName')]",
