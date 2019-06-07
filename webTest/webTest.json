@@ -2,7 +2,7 @@
   "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
-    "appName": {
+    "appInsightsName": {
       "type": "string",
       "metadata": {
         "description": "The name of the app insights instance that you wish to create."
@@ -58,7 +58,7 @@
       "type": "Microsoft.Insights/webtests",
       "location": "[parameters('location')]",
       "tags": {
-        "[concat('hidden-link:', resourceId('microsoft.insights/components/', parameters('appName')))]": "Resource"
+        "[concat('hidden-link:', resourceId('microsoft.insights/components/', parameters('appInsightsName')))]": "Resource"
       },
       "dependsOn": [],
       "properties": {
