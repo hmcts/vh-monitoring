@@ -7,7 +7,7 @@
     },
     "actionGroupEnabled": {
       "type": "bool",
-      "defaultValue": "true"
+      "defaultValue": true
     },
     "actionGroupShortName": {
       "type": "string",
@@ -30,7 +30,7 @@
       "tags": {},
       "properties": {
         "groupShortName": "[parameters('actionGroupShortName')]",
-        "enabled": true,
+        "enabled": "[parameters('actionGroupEnabled')]",
         "emailReceivers": [
           {
             "name": "[parameters('emailReceiverName')]",
