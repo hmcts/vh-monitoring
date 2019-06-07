@@ -3,13 +3,13 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "appName": {
-            "value": "vh-core-infra-preview"
+            "value": "AppInsighstName"
         },
         "tests": {
             "value": [
                 {
                     "name": "GEN-UNIQUE-1",
-                    "url": "https://vh-video-api-preview.hearings.reform.hmcts.net/swagger/index.html"
+                    "url": "https://microsoft.com"
                 }
             ]
         }
