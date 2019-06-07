@@ -7,7 +7,7 @@
     },
     "actionGroupEnabled": {
       "type": "bool",
-      "defaultValue": true
+      "defaultValue": "true"
     },
     "actionGroupShortName": {
       "type": "string",
