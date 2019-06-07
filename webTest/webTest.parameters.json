@@ -1,0 +1,17 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appName": {
+            "value": "vh-core-infra-preview"
+        },
+        "tests": {
+            "value": [
+                {
+                    "name": "GEN-UNIQUE-1",
+                    "url": "https://vh-video-api-preview.hearings.reform.hmcts.net/swagger/index.html"
+                }
+            ]
+        }
+    }
+}
