@@ -5,6 +5,10 @@
     "actionGroupName": {
       "type": "string"
     },
+    "actionGroupEnabled": {
+      "type": "bool",
+      "defaultValue": true
+    },
     "actionGroupShortName": {
       "type": "string",
       "maxLength": 15
@@ -26,7 +30,7 @@
       "tags": {},
       "properties": {
         "groupShortName": "[parameters('actionGroupShortName')]",
-        "enabled": true,
+        "enabled": "[parameters('actionGroupEnabled')]",
         "emailReceivers": [
           {
             "name": "[parameters('emailReceiverName')]",
