@@ -1,0 +1,33 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "appInsighstName": {
+            "value": "appInsighstName"
+        },
+        "alertName": {
+            "value": "alertName"
+        },
+        "alertDescription": {
+            "value": "Monitor availability"
+        },
+        "alertSeverity": {
+            "value": 3
+        },
+        "isEnabled": {
+            "value": true
+        },
+        "metricName": {
+            "value": "availabilityResults/count"
+        },
+        "operator": {
+            "value": "LessThan"
+        },
+        "threshold": {
+            "value": "4"
+        },
+        "actionGroupId": {
+            "value": "actionGroupId"
+        }
+    }
+}
