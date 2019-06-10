@@ -2,9 +2,9 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "appInsighstName": {
+        "appInsightsName": {
             "type": "string",
-            "defaultValue": "appInsighstName",
+            "defaultValue": "appInsightsName",
             "metadata": {
                 "description": "Name of the App Insights containing availability test"
             }
@@ -122,7 +122,7 @@
             "location": "global",
             "apiVersion": "2018-03-01",
             "tags": {
-                "[concat('hidden-link:', resourceId('microsoft.insights/components/', parameters('appInsighstName')))]": "Resource"
+                "[concat('hidden-link:', resourceId('microsoft.insights/components/', parameters('appInsightsName')))]": "Resource"
             },
             "properties": {
                 "evaluationFrequency": "[parameters('evaluationFrequency')]",
@@ -131,7 +131,7 @@
                 "severity": "[parameters('alertSeverity')]",
                 "enabled": "[parameters('isEnabled')]",
                 "scopes": [
-                    "[resourceId('microsoft.insights/components', parameters('appInsighstName'))]"
+                    "[resourceId('microsoft.insights/components', parameters('appInsightsName'))]"
                 ],
                 "criteria": {
                     "odata.type": "Microsoft.Azure.Monitor.SingleResourceMultipleMetricCriteria",
