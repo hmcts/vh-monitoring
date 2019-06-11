@@ -21,7 +21,7 @@
     }
   },
   "variables": {
-   "emailReceiverName": "[substring(replace(string(take(split(parameters('emailReceiverEmailAddress'), '@'), '1')),'.',''), 0, 15)]"
+   "emailReceiverName": "[take(split(parameters('emailReceiverEmailAddress'), '@'), 1)]"
   },
   "resources": [
     {
