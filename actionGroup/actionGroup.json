@@ -20,7 +20,9 @@
       "type": "string"
     }
   },
-  "variables": {},
+  "variables": {
+   "emailReceiverName": "[substring(replace(string(take(split(parameters('emailReceiverEmailAddress'), '@'), '1')),'.',''), 0, 15)]"
+  },
   "resources": [
     {
       "name": "[parameters('actionGroupName')]",
@@ -33,7 +35,7 @@
         "enabled": "[parameters('actionGroupEnabled')]",
         "emailReceivers": [
           {
-            "name": "[parameters('emailReceiverName')]",
+            "name": "[variables('emailReceiverName')]",
             "emailAddress": "[parameters('emailReceiverEmailAddress')]",
             "useCommonAlertSchema": true
           }

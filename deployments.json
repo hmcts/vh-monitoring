@@ -1,0 +1,32 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "_artifactsLocation": {
+            "type": "string",
+            "defaultValue": "https://raw.githubusercontent.com/hmcts/vh-monitoring/master/"
+        }
+    },
+    "variables": {
+        "actionGroupTemplateFolder": "actionGroup",
+        "actionGroupTemplateFileName": "actionGroup.json"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "linkedTemplate",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('_artifactsLocation'), variables('actionGroupTemplateFolder'), '/', variables('actionGroupTemplateFileName'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}

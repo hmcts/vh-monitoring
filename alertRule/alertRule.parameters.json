@@ -2,32 +2,17 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
-        "appInsighstName": {
-            "value": "appInsighstName"
+        "appInsightsName": {
+            "value": "vh-core-infra-preview"
         },
         "alertName": {
-            "value": "alertName"
-        },
-        "alertDescription": {
-            "value": "Monitor availability"
-        },
-        "alertSeverity": {
-            "value": 3
+            "value": "kinly-virtual-court-api"
         },
         "isEnabled": {
             "value": true
         },
-        "metricName": {
-            "value": "availabilityResults/count"
-        },
-        "operator": {
-            "value": "LessThan"
-        },
-        "threshold": {
-            "value": "4"
-        },
-        "actionGroupId": {
-            "value": "actionGroupId"
+        "actionGroupName": {
+            "value": "emailJanisBerzinsPreview"
         }
     }
 }
