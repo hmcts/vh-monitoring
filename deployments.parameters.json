@@ -7,6 +7,12 @@
         },
         "emailReceiverEmailAddress": {
             "value": "string"
+        },
+        "appInsightsName": {
+            "value": "string"
+        },
+        "tests": {
+            "value": "string"
         }
     }
 }
