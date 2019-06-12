@@ -9,19 +9,13 @@
       "type": "bool",
       "defaultValue": true
     },
-    "actionGroupShortName": {
-      "type": "string",
-      "maxLength": 15
-    },
-    "emailReceiverName": {
-      "type": "string"
-    },
     "emailReceiverEmailAddress": {
       "type": "string"
     }
   },
   "variables": {
-   "emailReceiverName": "[take(replace(replace(replace(replace(string(take(split(parameters('emailReceiverEmailAddress'), '@'), 1)),'.',''),'[',''),'\"',''),']',''),15)]"
+   "emailReceiverName": "[take(replace(replace(replace(replace(string(take(split(parameters('emailReceiverEmailAddress'), '@'), 1)),'.',''),'[',''),'\"',''),']',''),15)]",
+   "actionGroupShortName": "[take(parameters('emailReceiverEmailAddress'), 15)]"
   },
   "resources": [
     {
@@ -31,7 +25,7 @@
       "location": "global",
       "tags": {},
       "properties": {
-        "groupShortName": "[parameters('actionGroupShortName')]",
+        "groupShortName": "[variables('actionGroupShortName')]",
         "enabled": "[parameters('actionGroupEnabled')]",
         "emailReceivers": [
           {

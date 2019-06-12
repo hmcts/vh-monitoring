@@ -5,12 +5,6 @@
     "actionGroupName": {
       "value": "actionGroupName"
     },
-    "actionGroupShortName": {
-      "value": "actionGroupShortName"
-    },
-    "emailReceiverName": {
-      "value": "emailReceiverName"
-    },
     "emailReceiverEmailAddress": {
       "value": "emailReceiverEmailAddress"
     }
