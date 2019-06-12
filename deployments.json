@@ -49,7 +49,7 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2018-05-01",
-            "name": "[concat('webTest', '-', copyIndex().name)]",
+            "name": "[concat('webTest', parameters('tests')[copyIndex()].name)]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
@@ -60,8 +60,11 @@
                     "appInsightsName": {
                         "value": "[parameters('appInsightsName')]"
                     },
-                    "tests": {
-                        "value": "[parameters('tests')[copyIndex()]]"
+                    "testName": {
+                        "value": "[parameters('tests')[copyIndex().name]]"
+                    },
+                    "testUrl": {
+                        "value": "[parameters('tests')[copyIndex().url]]"
                     }
                 }
             },
