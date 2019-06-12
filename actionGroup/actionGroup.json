@@ -15,7 +15,7 @@
   },
   "variables": {
    "emailReceiverName": "[take(replace(replace(replace(replace(string(take(split(parameters('emailReceiverEmailAddress'), '@'), 1)),'.',''),'[',''),'\"',''),']',''),15)]",
-   "actionGroupShortName": "[take(parameters('emailReceiverEmailAddress'), 15)]"
+   "actionGroupShortName": "[take(parameters('actionGroupName'), 12)]"
   },
   "resources": [
     {
