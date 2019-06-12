@@ -5,13 +5,11 @@
         "appInsightsName": {
             "value": "appInsightsName"
         },
-        "tests": {
-            "value": [
-                {
-                    "name": "GEN-UNIQUE-1",
-                    "url": "https://microsoft.com"
-                }
-            ]
+        "testName": {
+            "value": "string"
+        },
+        "testUrl": {
+            "value": "string"
         }
     }
 }

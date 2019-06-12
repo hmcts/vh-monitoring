@@ -49,7 +49,7 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2018-05-01",
-            "name": "[concat('webTest', '-', copyIndex())]",
+            "name": "[concat('webTest', '-', copyIndex().name)]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
