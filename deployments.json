@@ -61,9 +61,13 @@
                         "value": "[parameters('appInsightsName')]"
                     },
                     "tests": {
-                        "value": "[parameters('tests')]"
+                        "value": "[parameters('tests')[copyIndex()]]"
                     }
                 }
+            },
+            "copy": {
+                "name": "createTests",
+                "count": "[length(parameters('tests'))]"
             }
         }
     ],
