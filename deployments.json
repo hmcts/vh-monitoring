@@ -61,10 +61,10 @@
                         "value": "[parameters('appInsightsName')]"
                     },
                     "testName": {
-                        "value": "[parameters('tests')[copyIndex().name]]"
+                        "value": "[parameters('tests')[copyIndex()].name]"
                     },
                     "testUrl": {
-                        "value": "[parameters('tests')[copyIndex().url]]"
+                        "value": "[parameters('tests')[copyIndex()].url]"
                     }
                 }
             },
