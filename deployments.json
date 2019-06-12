@@ -2,6 +2,12 @@
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
+        "actionGroupName": {
+            "type": "string"
+        },
+        "emailReceiverEmailAddress": {
+            "type": "string"
+        },
         "_artifactsLocation": {
             "type": "string",
             "defaultValue": "https://raw.githubusercontent.com/hmcts/vh-monitoring/master/"
@@ -23,7 +29,12 @@
                     "contentVersion": "1.0.0.0"
                 },
                 "parameters": {
-                    
+                    "actionGroupName": {
+                        "value": "[parameters('actionGroupName')]"
+                    },
+                    "emailReceiverEmailAddress": {
+                        "value": "[parameters('emailReceiverEmailAddress')]"
+                    }
                 }
             }
         }
