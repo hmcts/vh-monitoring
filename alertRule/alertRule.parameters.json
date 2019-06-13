@@ -3,16 +3,16 @@
     "contentVersion": "1.0.0.0",
     "parameters": {
         "appInsightsName": {
-            "value": "vh-core-infra-preview"
+            "value": "appInsightsName"
         },
         "alertName": {
-            "value": "kinly-virtual-court-api"
+            "value": "alertName"
         },
         "isEnabled": {
             "value": true
         },
-        "actionGroupName": {
-            "value": "emailJanisBerzinsPreview"
+        "actionGroupId": {
+            "value": "actionGroupId"
         }
     }
 }

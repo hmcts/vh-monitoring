@@ -23,7 +23,9 @@
         "actionGroupTemplateFolder": "actionGroup",
         "actionGroupTemplateFileName": "actionGroup.json",
         "webTestTemplateFolder": "webTest",
-        "webTestTemplateFileName": "webTest.json"
+        "webTestTemplateFileName": "webTest.json",
+        "alertRuleTemplateFolder": "alertRule",
+        "alertRuleTemplateFileName": "alertRule.json"        
     },
     "resources": [
         {
@@ -70,6 +72,33 @@
             },
             "copy": {
                 "name": "createTests",
+                "count": "[length(parameters('tests'))]"
+            }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "[concat('alertRule','-', parameters('tests')[copyIndex()].name)]",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('_artifactsLocation'), variables('alertRuleTemplateFolder'), '/', variables('alertRuleTemplateFileName'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "appInsightsName": {
+                        "value": "[parameters('appInsightsName')]"
+                    },
+                    "alertName": {
+                        "value": "[parameters('tests')[copyIndex()].name]"
+                    },
+                    "actionGroupId": {
+                        "value": "[reference('actionGroup').outputs.resourceID.value]"
+                    }
+                }
+            },
+            "copy": {
+                "name": "createAlertRules",
                 "count": "[length(parameters('tests'))]"
             }
         }
