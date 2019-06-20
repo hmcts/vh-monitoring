@@ -67,11 +67,12 @@
         }
     },
     "variables": {
-        "webTestName": "[parameters('alertName')]"
+        "webTestName": "[parameters('alertName')]",
+        "metricAlertName": "[toLower(concat(parameters('alertName'), '-', parameters('appInsightsName')))]"
     },
     "resources": [
         {
-            "name": "[concat(parameters('alertName'), '-', parameters('appInsightsName'))]",
+            "name": "[variables('metricAlertName')]",
             "type": "Microsoft.Insights/metricAlerts",
             "location": "global",
             "apiVersion": "2018-03-01",

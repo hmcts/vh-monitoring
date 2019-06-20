@@ -1,0 +1,37 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {},
+    "variables": {},
+    "resources": [
+        {
+            "type": "microsoft.insights/scheduledqueryrules",
+            "apiVersion": "2018-04-16",
+            "name": "[parameters('scheduledqueryrules_alert_app_insights_search_query_name')]",
+            "location": "westeurope",
+            "dependsOn": [
+                "[resourceId('microsoft.insights/components', parameters('components_vh_core_infra_preview_name'))]"
+            ],
+            "tags": {
+                "hidden-link:/subscriptions/705b2731-0e0b-4df7-8630-95f157f0a347/resourceGroups/vh-core-infra-preview/providers/Microsoft.Insights/components/vh-core-infra-preview": "Resource"
+            },
+            "properties": {
+                "enabled": "true",
+                "source": {
+                    "query": "// Failed operations\n// Calculate how many times operations failed, and how many users were impacted\nrequests\n| where success == false",
+                    "authorizedResources": [],
+                    "dataSourceId": "[resourceId('microsoft.insights/components', parameters('components_vh_core_infra_preview_name'))]",
+                    "queryType": "ResultCount"
+                },
+                "schedule": {
+                    "frequencyInMinutes": 5,
+                    "timeWindowInMinutes": 5
+                },
+                "action": {
+                    "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction"
+                }
+            }
+        }
+    ],
+    "outputs": {}
+}
