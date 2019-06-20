@@ -15,7 +15,7 @@
             "type": "array"
         },
         "alertRuleEnabled": {
-            "type": "string"
+            "type":"bool"
         },
         "_artifactsLocation": {
             "type": "string",
