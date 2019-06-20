@@ -95,7 +95,7 @@
                     "alertName": {
                         "value": "[parameters('tests')[copyIndex()].name]"
                     },
-                    " ": {
+                    "alertRuleEnabled": {
                         "value": "[parameters('alertRuleEnabled')]"
                     },
                     "actionGroupId": {
