@@ -8,8 +8,8 @@
         "alertName": {
             "value": "alertName"
         },
-        "isEnabled": {
-            "value": true
+        "alertRuleEnabled": {
+            "value": "false"
         },
         "actionGroupId": {
             "value": "actionGroupId"

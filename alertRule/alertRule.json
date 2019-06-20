@@ -31,9 +31,9 @@
                 "description": "Severity of alert {0,1,2,3,4}"
             }
         },
-        "isEnabled": {
+        "alertRuleEnabled": {
             "type": "bool",
-            "defaultValue": true,
+            "defaultValue": false,
             "metadata": {
                 "description": "Specifies whether the alert is enabled"
             }
@@ -82,7 +82,7 @@
             "properties": {
                 "description": "[concat('Alert rule for availability test', variables('webTestName'))]",
                 "severity": "[parameters('alertSeverity')]",
-                "enabled": "[parameters('isEnabled')]",
+                "enabled": "[parameters('alertRuleEnabled')]",
                 "scopes": [
                     "[resourceId('microsoft.insights/components/', parameters('appInsightsName'))]",
                     "[resourceId('microsoft.insights/webtests/', variables('webTestName'))]"
