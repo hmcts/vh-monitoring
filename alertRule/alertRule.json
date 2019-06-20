@@ -71,7 +71,7 @@
     },
     "resources": [
         {
-            "name": "[concat(parameters('alertName'), '-', parameters('alertName'))]",
+            "name": "[concat(parameters('alertName'), '-', parameters('appInsightsName'))]",
             "type": "Microsoft.Insights/metricAlerts",
             "location": "global",
             "apiVersion": "2018-03-01",
