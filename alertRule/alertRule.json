@@ -71,7 +71,7 @@
     },
     "resources": [
         {
-            "name": "[parameters('alertName')]",
+            "name": "[concat(parameters('alertName'), '-', parameters('alertName'))]",
             "type": "Microsoft.Insights/metricAlerts",
             "location": "global",
             "apiVersion": "2018-03-01",
@@ -80,7 +80,7 @@
                 "[concat('hidden-link:', resourceId('microsoft.insights/webtests/', variables('webTestName')))]": "Resource"
             },
             "properties": {
-                "description": "[concat('Alert rule for availability test', variables('webTestName'))]",
+                "description": "[concat('Alert rule for availability test ', variables('webTestName'))]",
                 "severity": "[parameters('alertSeverity')]",
                 "enabled": "[parameters('alertRuleEnabled')]",
                 "scopes": [
