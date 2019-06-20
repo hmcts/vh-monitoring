@@ -14,6 +14,9 @@
         "tests": {
             "type": "array"
         },
+        "alertRuleEnabled": {
+            "type": "string"
+        },
         "_artifactsLocation": {
             "type": "string",
             "defaultValue": "https://raw.githubusercontent.com/hmcts/vh-monitoring/master/"
@@ -25,7 +28,7 @@
         "webTestTemplateFolder": "webTest",
         "webTestTemplateFileName": "webTest.json",
         "alertRuleTemplateFolder": "alertRule",
-        "alertRuleTemplateFileName": "alertRule.json"        
+        "alertRuleTemplateFileName": "alertRule.json"
     },
     "resources": [
         {
@@ -91,6 +94,9 @@
                     },
                     "alertName": {
                         "value": "[parameters('tests')[copyIndex()].name]"
+                    },
+                    " ": {
+                        "value": "[parameters('alertRuleEnabled')]"
                     },
                     "actionGroupId": {
                         "value": "[reference('actionGroup').outputs.resourceID.value]"
