@@ -115,6 +115,35 @@
                 "name": "createAlertRules",
                 "count": "[length(parameters('tests'))]"
             }
+        },
+        {
+            "type": "Microsoft.Resources/deployments",
+            "apiVersion": "2018-05-01",
+            "name": "alertRuleSearchQuery",
+            "properties": {
+                "mode": "Incremental",
+                "templateLink": {
+                    "uri": "[concat(parameters('_artifactsLocation'), variables('alertRuleSearchQueryTemplateFolder'), '/', variables('alertRuleSearchQueryTemplateFileName'))]",
+                    "contentVersion": "1.0.0.0"
+                },
+                "parameters": {
+                    "appInsightsName": {
+                        "value": "[parameters('appInsightsName')]"
+                    },
+                    "searchQueryAlertName": {
+                        "value": "[parameters('searchQueryAlertName')]"
+                    },
+                    "searchQuery": {
+                        "value": "[parameters('searchQuery')]"
+                    },
+                    "alertRuleEnabled": {
+                        "value": "[parameters('alertRuleEnabled')]"
+                    },
+                    "actionGroupId": {
+                        "value": "[reference('actionGroup').outputs.resourceID.value]"
+                    }
+                }
+            }
         }
     ],
     "outputs": {}

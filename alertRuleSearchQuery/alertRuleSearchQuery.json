@@ -63,7 +63,7 @@
     },
     "resources": [
         {
-            "type": "microsoft.insights/scheduledqueryrules",
+            "type": "Microsoft.Insights/scheduledQueryRules",
             "apiVersion": "2018-04-16",
             "name": "[variables('searchQueryAlertName')]",
             "location": "westeurope",
