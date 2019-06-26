@@ -15,7 +15,7 @@
             "value": "alertName"
         },
         "alertRuleEnabled": {
-            "value": "false"
+            "value": false
         },
         "actionGroupId": {
             "value": "actionGroupId"
