@@ -1,26 +1,82 @@
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
+    "parameters": {
+        "appInsightsName": {
+            "type": "string",
+            "defaultValue": "appInsightsName",
+            "metadata": {
+                "description": "Name of the App Insights containing availability test"
+            }
+        },
+        "searchQuery": {
+            "type": "string",
+            "defaultValue": "requests\n| where success == false",
+            "metadata": {
+                "description": "Search query that is used to search in Log Analytics"
+            }
+        },
+        "searchQueryAlertName": {
+            "type": "string",
+            "defaultValue": "alertName",
+            "minLength": 1,
+            "metadata": {
+                "description": "Name of the alert"
+            }
+        },
+        "alertSeverity": {
+            "type": "int",
+            "defaultValue": 1,
+            "allowedValues": [
+                0,
+                1,
+                2,
+                3,
+                4
+            ],
+            "metadata": {
+                "description": "Severity of alert {0,1,2,3,4}"
+            }
+        },
+        "alertRuleEnabled": {
+            "type": "bool",
+            "defaultValue": false,
+            "metadata": {
+                "description": "Specifies whether the alert is enabled"
+            }
+        },
+        "triggerThreshold": {
+            "type": "string",
+            "metadata": {
+                "description": "The threshold that is used to trigger the alert"
+            }
+        },
+        "actionGroupId": {
+            "type": "string",
+            "metadata": {
+                "description": "The name of the action group that will be used to get the action group's ID and is triggered when the alert is activated or deactivated"
+            }
+        }
+    },
+    "variables": {
+        "searchQueryAlertName": "[toLower(concat(parameters('searchQueryAlertName'), '-', parameters('appInsightsName')))]"
+    },
     "resources": [
         {
             "type": "microsoft.insights/scheduledqueryrules",
             "apiVersion": "2018-04-16",
-            "name": "[parameters('scheduledqueryrules_alert_app_insights_search_query_name')]",
+            "name": "[variables('searchQueryAlertName')]",
             "location": "westeurope",
-            "dependsOn": [
-                "[resourceId('microsoft.insights/components', parameters('components_vh_core_infra_preview_name'))]"
-            ],
+            "dependsOn": [],
             "tags": {
-                "hidden-link:/subscriptions/705b2731-0e0b-4df7-8630-95f157f0a347/resourceGroups/vh-core-infra-preview/providers/Microsoft.Insights/components/vh-core-infra-preview": "Resource"
+                "[concat('hidden-link:', resourceId('microsoft.insights/components/', parameters('appInsightsName')))]": "Resource"
             },
             "properties": {
-                "enabled": "true",
+                "enabled": "[parameters('alertRuleEnabled')]",
                 "source": {
-                    "query": "// Failed operations\n// Calculate how many times operations failed, and how many users were impacted\nrequests\n| where success == false",
+                    "query": "[parameters('searchQuery')]",
                     "authorizedResources": [],
-                    "dataSourceId": "[resourceId('microsoft.insights/components', parameters('components_vh_core_infra_preview_name'))]",
+                    "dataSourceId": "[resourceId('microsoft.insights/components',  parameters('appInsightsName'))]",
                     "queryType": "ResultCount"
                 },
                 "schedule": {
@@ -28,6 +84,18 @@
                     "timeWindowInMinutes": 5
                 },
                 "action": {
+                    "severity": "[parameters('alertSeverity')]",
+                    "aznsAction": {
+                        "actionGroup": [
+                            "[parameters('actionGroupId')]"
+                        ],
+                        "emailSubject": null,
+                        "customWebhookPayload": null
+                    },
+                    "trigger": {
+                        "thresholdOperator": "GreaterThan",
+                        "threshold": "[parameters('triggerThreshold')]"
+                    },
                     "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction"
                 }
             }
