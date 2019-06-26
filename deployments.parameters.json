@@ -16,6 +16,12 @@
         },
         "alertRuleEnabled": {
             "value": "string"
+        },
+        "searchQueryAlertName": {
+            "value": "string"
+        },
+        "searchQuery": {
+            "value": "string"
         }
     }
 }
