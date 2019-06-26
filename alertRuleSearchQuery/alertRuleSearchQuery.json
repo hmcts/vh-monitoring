@@ -46,8 +46,8 @@
             }
         },
         "triggerThreshold": {
-            "type": "string",
-            "defaultValue": "10",
+            "type": "int",
+            "defaultValue": 10,
             "metadata": {
                 "description": "The threshold that is used to trigger the alert"
             }
