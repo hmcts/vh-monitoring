@@ -60,7 +60,8 @@
         }
     },
     "variables": {
-        "searchQueryAlertName": "[toLower(concat(parameters('searchQueryAlertName'), '-', parameters('appInsightsName')))]"
+        "searchQueryAlertName": "[toLower(concat(parameters('searchQueryAlertName'), '-', parameters('appInsightsName')))]",
+        "alertRuleEnabled": "[string(parameters('alertRuleEnabled'))]"
     },
     "resources": [
         {
@@ -73,7 +74,7 @@
                 "[concat('hidden-link:', resourceId('microsoft.insights/components/', parameters('appInsightsName')))]": "Resource"
             },
             "properties": {
-                "enabled": "[parameters('alertRuleEnabled')]",
+                "enabled": "[variables('alertRuleEnabled')]",
                 "source": {
                     "query": "[parameters('searchQuery')]",
                     "authorizedResources": [],
