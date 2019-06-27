@@ -46,8 +46,8 @@
             }
         },
         "triggerThreshold": {
-            "type": "int",
-            "defaultValue": 10,
+            "type": "string",
+            "defaultValue": "10",
             "metadata": {
                 "description": "The threshold that is used to trigger the alert"
             }
@@ -61,7 +61,9 @@
     },
     "variables": {
         "searchQueryAlertName": "[toLower(concat(parameters('searchQueryAlertName'), '-', parameters('appInsightsName')))]",
-        "alertRuleEnabled": "[string(parameters('alertRuleEnabled'))]"
+        "alertRuleEnabled": "[string(parameters('alertRuleEnabled'))]",
+        "triggerThreshold": "[int(parameters('triggerThreshold'))]"
+
     },
     "resources": [
         {
@@ -96,7 +98,7 @@
                     },
                     "trigger": {
                         "thresholdOperator": "GreaterThan",
-                        "threshold": "[parameters('triggerThreshold')]"
+                        "threshold": "[variables('triggerThreshold')]"
                     },
                     "odata.type": "Microsoft.WindowsAzure.Management.Monitoring.Alerts.Models.Microsoft.AppInsights.Nexus.DataContracts.Resources.ScheduledQueryRules.AlertingAction"
                 }
