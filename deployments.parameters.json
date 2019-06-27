@@ -17,10 +17,7 @@
         "alertRuleEnabled": {
             "value": "string"
         },
-        "searchQueryAlertName": {
-            "value": "string"
-        },
-        "searchQuery": {
+        "logAnalyticsSearchQuery": {
             "value": "string"
         }
     }
