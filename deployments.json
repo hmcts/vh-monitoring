@@ -11,11 +11,8 @@
         "appInsightsName": {
             "type": "string"
         },
-        "searchQueryAlertName": {
-            "type": "string"
-        },
-        "searchQuery": {
-            "type": "string"
+        "logAnalyticsSearchQuery": {
+            "type": "array"
         },
         "tests": {
             "type": "array"
@@ -131,10 +128,13 @@
                         "value": "[parameters('appInsightsName')]"
                     },
                     "searchQueryAlertName": {
-                        "value": "[parameters('searchQueryAlertName')]"
+                        "value": "[parameters('logAnalyticsSearchQuery')[copyIndex()].queryName]"
                     },
                     "searchQuery": {
-                        "value": "[parameters('searchQuery')]"
+                        "value": "[parameters('logAnalyticsSearchQuery')[copyIndex()].query]"
+                    },
+                    "triggerThreshold": {
+                        "value": "[parameters('logAnalyticsSearchQuery')[copyIndex()].threshold]"
                     },
                     "alertRuleEnabled": {
                         "value": "[parameters('alertRuleEnabled')]"
@@ -142,6 +142,10 @@
                     "actionGroupId": {
                         "value": "[reference('actionGroup').outputs.resourceID.value]"
                     }
+                },
+                "copy": {
+                    "name": "logAnalyticsSearchQuery",
+                    "count": "[length(parameters('logAnalyticsSearchQuery'))]"
                 }
             }
         }

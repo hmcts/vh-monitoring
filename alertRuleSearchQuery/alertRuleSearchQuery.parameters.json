@@ -5,14 +5,8 @@
         "appInsightsName": {
             "value": "appInsightsName"
         },
-        "searchQuery": {
-            "value": "requests\n| where success == false"
-        },
-        "triggerThreshold": {
-            "value": 10
-        },
-        "searchQueryAlertName": {
-            "value": "alertName"
+        "logAnalyticsSearchQuery": {
+            "value": "someArray"
         },
         "alertRuleEnabled": {
             "value": "false"
