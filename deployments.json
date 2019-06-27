@@ -116,7 +116,7 @@
         {
             "type": "Microsoft.Resources/deployments",
             "apiVersion": "2018-05-01",
-            "name": "alertRuleSearchQuery",
+            "name": "[concat('alertRuleSearchQuery','-', parameters('logAnalyticsSearchQuery')[copyIndex()].queryName)]",
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
