@@ -18,7 +18,7 @@
             "type": "array"
         },
         "alertRuleEnabled": {
-            "type":"bool"
+            "type": "bool"
         },
         "_artifactsLocation": {
             "type": "string",
@@ -142,11 +142,11 @@
                     "actionGroupId": {
                         "value": "[reference('actionGroup').outputs.resourceID.value]"
                     }
-                },
-                "copy": {
-                    "name": "logAnalyticsSearchQuery",
-                    "count": "[length(parameters('logAnalyticsSearchQuery'))]"
                 }
+            },
+            "copy": {
+                "name": "logAnalyticsSearchQuery",
+                "count": "[length(parameters('logAnalyticsSearchQuery'))]"
             }
         }
     ],
