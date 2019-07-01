@@ -71,7 +71,7 @@
             "location": "westeurope",
             "dependsOn": [],
             "tags": {
-                "[concat('hidden-link:', resourceId('microsoft.insights/components/', parameters('appInsightsName')))]": "Resource"
+                "[concat('hidden-link:', resourceId('Microsoft.Insights/components/', parameters('appInsightsName')))]": "Resource"
             },
             "properties": {
                 "enabled": "[variables('alertRuleEnabled')]",
